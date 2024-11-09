@@ -5,8 +5,8 @@
       "sha256": "ebc4ab8b8063435fa1b2208fd109b81e296d6ec54444d9c82578d34e22891960"
     },
     {
-      "url": "https://github.com/cabaletta/baritone/releases/download/v1.10.2/baritone-api-fabric-1.10.2.jar",
-      "sha256": "9c9c37d47bc4b9db8b6163ab76044f2349254ce8088ff6393a1d25439193a8d8"
+      "url": "https://github.com/nothub/baritone-mirror/raw/refs/heads/main/baritone-api-fabric-1.21.3.jar",
+      "sha256": "570daf62da30933df80cea4be0cf1ba3ece49fc8f5b2e98448e3d72e64171b63"
     }
   ]
 }
