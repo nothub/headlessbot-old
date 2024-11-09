@@ -57,17 +57,22 @@ if test -z "$(find './mc/versions/' -maxdepth 1 -name "fabric-loader-*-${mc_vers
     hmc fabric "${mc_version}"
 fi
 
-# download mods
-(
+dlmod() {
     mkdir -p "mc/mods"
-    cd "mc/mods"
+    curl -fsSL -o "${1}" "${2}"
+    if ! file --mime-type "${1}" | grep -E '.+: application/java-archive' 1> /dev/null; then
+        printf >&2 '%s is not a jar file!\n' "${1}"
+        file "${1}"
+        file --mime-type "${1}"
+        exit 1
+    fi
+}
 
-    curl -fsSL -o 'fabric-api.jar' \
-        "https://github.com/FabricMC/fabric/releases/download/${fabric_api_version}/fabric-api-${fabric_api_version}.jar"
+dlmod 'mc/mods/fabric-api.jar' \
+    "https://github.com/FabricMC/fabric/releases/download/${fabric_api_version}/fabric-api-${fabric_api_version}.jar"
 
-    curl -fsSL -o 'baritone-api-fabric.jar' \
-        "https://github.com/nothub/baritone-mirror/raw/refs/heads/main/${mc_version}/baritone-api-fabric-${mc_version}.jar"
-)
+dlmod 'mc/mods/baritone-api-fabric.jar' \
+    "https://github.com/nothub/baritone-mirror/raw/refs/heads/main/${mc_version}/baritone-api-fabric-${mc_version}.jar"
 
 (
     # go to project root
