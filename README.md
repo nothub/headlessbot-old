@@ -7,10 +7,22 @@ and [cabaletta/baritone](https://github.com/cabaletta/baritone).
 
 ## Usage
 
-Install [Devbox](https://github.com/jetify-com/devbox) and run `devbox run bot` (or install the required tooling and run `./scripts/bot.sh`) 
-to start the bot in a Docker container.
+[Tools required](https://github.com/nothub/headlessbot/blob/trunk/devbox.json#L3)
+for execution and development are managed with [Devbox](https://github.com/jetify-com/devbox).
 
-Run `devbox run server` (or `./scripts/server.sh`) to start a local test server or `devbox run monitoring` (or `./scripts/monitoring.sh`) to run some monitoring stuff.
+## Bot
+
+Execute `devbox run bot` to start the bot.
+
+### Server
+
+Execute `devbox run server` to start a local test server.
+
+### Monitoring
+
+Execute `devbox run monitoring` to start some monitoring stuff.
+
+Visit Grafana at [127.0.0.1:3000](http://127.0.0.1:3000/login) and check the dashboard.
 
 ## Behavior
 
