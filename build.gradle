@@ -40,9 +40,9 @@ dependencies {
 
     modImplementation urlFile("https://github.com/nothub/baritone-mirror/raw/refs/heads/main/baritone-api-fabric-${project.minecraft_version}.jar", "baritone", "${project.minecraft_version}")
 
-    implementation "io.prometheus:prometheus-metrics-core:${project.prometheus_lib_version}"
-    implementation "io.prometheus:prometheus-metrics-instrumentation-jvm:${project.prometheus_lib_version}"
-    implementation "io.prometheus:prometheus-metrics-exporter-httpserver:${project.prometheus_lib_version}"
+    shadow "io.prometheus:prometheus-metrics-core:${project.prometheus_lib_version}"
+    shadow "io.prometheus:prometheus-metrics-instrumentation-jvm:${project.prometheus_lib_version}"
+    shadow "io.prometheus:prometheus-metrics-exporter-httpserver:${project.prometheus_lib_version}"
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${project.junit_version}"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${project.junit_version}"
@@ -70,6 +70,11 @@ shadowJar {
     configurations = [project.configurations.shadow]
     archiveClassifier.set('shadow')
     archiveVersion.set('')
+}
+
+tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    enableRelocation true
+    relocationPrefix "lol.hub.headlessbot.shady"
 }
 
 remapJar {
