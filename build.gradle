@@ -40,10 +40,9 @@ dependencies {
 
     modImplementation urlFile("https://github.com/nothub/baritone-mirror/raw/refs/heads/main/baritone-api-fabric-${project.minecraft_version}.jar", "baritone", "${project.minecraft_version}")
 
-    library 'io.prometheus:simpleclient:0.16.0'
-    library 'io.prometheus:simpleclient_hotspot:0.16.0'
-    library 'io.prometheus:simpleclient_httpserver:0.16.0'
-    library 'io.prometheus:simpleclient_jetty:0.16.0'
+    implementation "io.prometheus:prometheus-metrics-core:${project.prometheus_metrics_version}"
+    implementation "io.prometheus:prometheus-metrics-instrumentation-jvm:${project.prometheus_metrics_version}"
+    implementation "io.prometheus:prometheus-metrics-exporter-httpserver:${project.prometheus_metrics_version}"
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.3'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.3'
