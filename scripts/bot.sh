@@ -22,10 +22,10 @@ prop() {
 
 hmc_version="$(prop 'headlessmc_version')"
 mc_version="$(prop 'minecraft_version')"
-fabric_version="$(prop 'fabric_loader_version')"
 
-# workdir
+# go to project root
 cd "$(dirname "$(realpath "$0")")/.."
+
 mkdir -p run
 cd run
 
@@ -71,6 +71,7 @@ for mod in $(echo "$mods" | jq -c '.[]'); do
 done
 
 (
+    # go to project root
     cd ..
 
     # build our mod
