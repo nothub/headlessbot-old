@@ -64,7 +64,6 @@ processResources {
         filter { line -> line.replace("@minecraft_version@", project.minecraft_version) }
         filter { line -> line.replace("@fabric_loader_version@", project.fabric_loader_version) }
         filter { line -> line.replace("@fabric_api_version@", project.fabric_api_version) }
-        filter { line -> line.replace("@baritone_version@", project.minecraft_version) }
     }
 }
 
