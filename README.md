@@ -7,7 +7,8 @@ and [cabaletta/baritone](https://github.com/cabaletta/baritone).
 
 ## Usage
 
-Run `./scripts/bot.sh` to start the bot in a Docker container.
+Install [Devbox](https://github.com/jetify-com/devbox) and run `devbox run bot`
+or install the required tooling and run `./scripts/bot.sh` to start the bot in a Docker container.
 
 ## Behavior
 
