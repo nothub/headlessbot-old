@@ -24,7 +24,7 @@ public abstract class ClientConnectionMixin {
         }
 
         if (packet instanceof DeathMessageS2CPacket p) {
-            if (MC.inGame() && MC.player().getId() == p.getEntityId()) {
+            if (MC.inGame() && MC.player().getId() == p.playerId()) {
                 Metrics.deaths.inc();
             }
         }

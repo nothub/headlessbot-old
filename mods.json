@@ -1,8 +1,8 @@
 {
   "mods": [
     {
-      "url": "https://github.com/FabricMC/fabric/releases/download/0.97.2+1.20.4/fabric-api-0.97.2+1.20.4.jar",
-      "sha256": "473b9278dc8e97cbde1d8d52e24af6ee3f296ae00d7b46d14967ebcbe16fb7a7"
+      "url": "https://github.com/FabricMC/fabric/releases/download/0.107.3+1.21.3/fabric-api-0.107.3+1.21.3.jar",
+      "sha256": "ebc4ab8b8063435fa1b2208fd109b81e296d6ec54444d9c82578d34e22891960"
     },
     {
       "url": "https://github.com/cabaletta/baritone/releases/download/v1.10.2/baritone-api-fabric-1.10.2.jar",
