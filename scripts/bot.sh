@@ -20,8 +20,9 @@ prop() {
         | sed -E 's/^\w+\s*=\s*//'
 }
 
-hmc_version="$(prop 'headlessmc_version')"
 mc_version="$(prop 'minecraft_version')"
+hmc_version="$(prop 'headlessmc_version')"
+fabric_api_version="$(prop 'fabric_api_version')"
 
 # go to project root
 cd "$(dirname "$(realpath "$0")")/.."
@@ -57,18 +58,16 @@ if test -z "$(find './mc/versions/' -maxdepth 1 -name "fabric-loader-*-${mc_vers
 fi
 
 # download mods
-mkdir -p "mc/mods"
-mods=$(jq -r '.mods' "../mods.json")
-for mod in $(echo "$mods" | jq -c '.[]'); do
-    file=$(basename "$(echo "$mod" | jq -r '.url')")
-    url=$(echo "$mod" | jq -r '.url')
-    sha256=$(echo "$mod" | jq -r '.sha256')
-    if test ! -e "mc/mods/${file}"; then
-        echo "fetching ${file} from ${url}"
-        curl -sSL -o "mc/mods/${file}" "${url}"
-        echo "${sha256} mc/mods/${file}" | sha256sum -c -
-    fi
-done
+(
+    mkdir -p "mc/mods"
+    cd "mc/mods"
+
+    curl -fsSL -o 'fabric-api.jar' \
+        "https://github.com/FabricMC/fabric/releases/download/${fabric_api_version}/fabric-api-${fabric_api_version}.jar"
+
+    curl -fsSL -o 'baritone-api-fabric.jar' \
+        "https://github.com/nothub/baritone-mirror/raw/refs/heads/main/${mc_version}/baritone-api-fabric-${mc_version}.jar"
+)
 
 (
     # go to project root
