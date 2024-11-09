@@ -6,6 +6,7 @@ set -o pipefail
 
 hmc() {
     docker run -it --rm \
+        --name "headlessbot" \
         -p "127.0.0.1:8080:8080" \
         -v "${PWD}/mc:/work/.minecraft" \
         -v "${PWD}/hmc:/work/HeadlessMC" \
