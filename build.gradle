@@ -40,12 +40,12 @@ dependencies {
 
     modImplementation urlFile("https://github.com/nothub/baritone-mirror/raw/refs/heads/main/baritone-api-fabric-${project.minecraft_version}.jar", "baritone", "${project.minecraft_version}")
 
-    implementation "io.prometheus:prometheus-metrics-core:${project.prometheus_metrics_version}"
-    implementation "io.prometheus:prometheus-metrics-instrumentation-jvm:${project.prometheus_metrics_version}"
-    implementation "io.prometheus:prometheus-metrics-exporter-httpserver:${project.prometheus_metrics_version}"
+    implementation "io.prometheus:prometheus-metrics-core:${project.prometheus_lib_version}"
+    implementation "io.prometheus:prometheus-metrics-instrumentation-jvm:${project.prometheus_lib_version}"
+    implementation "io.prometheus:prometheus-metrics-exporter-httpserver:${project.prometheus_lib_version}"
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.3'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.3'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${project.junit_version}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${project.junit_version}"
 }
 
 sourceCompatibility = JavaVersion.VERSION_21
