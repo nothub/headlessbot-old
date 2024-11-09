@@ -47,6 +47,9 @@ public class Mod implements ModInitializer, ClientModInitializer {
     public void onInitializeClient() {
         behavior = defaultBehavior();
         chat = new Chat();
+/*
+
+        // TODO: this broke on update to java 21
 
         try {
             var server = webServer();
@@ -57,6 +60,7 @@ public class Mod implements ModInitializer, ClientModInitializer {
             // there is no need for graceful shutdown 🙈
             throw new IllegalStateException(ex.getMessage());
         }
+*/
 
         ScreenEvents.AFTER_INIT.register((client, screen, scaledWidth, scaledHeight) -> {
             if (screen instanceof AccessibilityOnboardingScreen) {
