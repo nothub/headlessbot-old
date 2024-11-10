@@ -19,8 +19,12 @@ mkdir -p run/server
 cd run/server
 
 if test ! -f "paper-${mc_version}.jar"; then
-    build_id="$(curl -s https://api.papermc.io/v2/projects/paper/versions/${mc_version}/builds \
-        | jq -r '.builds | map(select(.channel == "default") | .build) | .[-1]')"
+    json="$(curl -s https://api.papermc.io/v2/projects/paper/versions/${mc_version}/builds)"
+    build_id="$(echo "${json}" | jq -r '.builds | map(select(.channel == "default") | .build) | .[-1]')"
+    if test "${build_id}" = "null"; then
+        build_id="$(echo "${json}" | jq -r '.builds | map(select(.channel == "experimental") | .build) | .[-1]')"
+        echo >&2 "Downloading experimental paper build!"
+    fi
     jar_url="https://api.papermc.io/v2/projects/paper/versions/${mc_version}/builds/${build_id}/downloads/paper-${mc_version}-${build_id}.jar"
     curl -fsSL -o "paper-${mc_version}.jar" "${jar_url}"
 fi
